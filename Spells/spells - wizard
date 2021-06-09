@@ -1,0 +1,18 @@
+/w @{character_name} &{template:atk} {{desc=**Spellbook**
+
+**Cantrips:**
+[Chill Touch](!&#13;&#37;{@{selected|character_name}&#124;Spell_0_ChillTouch&#125;)
+[Fire Bolt](!&#13;&#37;{@{selected|character_name}&#124;Spell_0_FireBolt&#125;)
+
+**1st:**
+[Burning Hands](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_BurningHands&#125;)
+[Chromatic Orb](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_Chromatic_Orb&#125;)
+[Magic Missile](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_MagicMissile&#125;)
+[Shield](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_Shield&#125;)
+[Sleep](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_Sleep&#125;)
+
+**2nd:**
+[Scorching Ray](!&#13;&#37;{@{selected|character_name}&#124;Spell_2_Scorching_Ray&#125;)
+[Shatter](!&#13;&#37;{@{selected|character_name}&#124;Spell_2_Shatter&#125;)
+
+}}

@@ -1,0 +1,18 @@
+!power {{
+ --name|Chill Touch
+ --leftsub|Ranged Spell Attack
+ --rightsub|60 ft Range
+ --bgcolor|#0B5345
+
+ --Attack:|[[ [$Atk] ?{Attack|Standard,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1} + @{spell_attack_bonus} ]] 
+
+ --?? $Atk.base == 20 ?? Critical Hit|[[ [$CritDmg] 4d8 ]]
+ --?? $Atk >= @{target|AC} AND $Atk.base <> 20 ?? Hit! Damage:|[[ [$Dmg] 2d8 ]]
+ --?? $Atk < @{target|AC} ?? Spell Missed|
+
+ --vfx_opt|@{selected|token_id} @{target|token_id} beam-frost 
+ --?? $Atk >= @{target|AC} ?? Slowed:|Target's speed is reduced by 10 ft until start of your next turn
+
+ --?? $Atk >= @{target|AC} ?? api_act|-1 1 _ @{target|token_name} Slowed by 10'
+
+}}

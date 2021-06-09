@@ -1,0 +1,79 @@
+!scriptcard  {{ 
+  --#title|Scorching Ray
+  --#emoteText|Fred casts Scorching Ray at @{target|token_name}
+  --#leftsub|Spell
+  --#rightsub|Ranged Attack
+  --#titleCardBackground|#44805a
+  --#sourceToken|@{selected|token_id}
+  --#targetToken|@{target|token_id}
+  --=SlotLevel|?{Spell Slot Level?|2|3|4|5|6|7|8|9}
+  --=NumOfRays|[$SlotLevel] + 1
+  --=DamageRoll|[$SlotLevel]d8
+
+  --+Level|[$SlotLevel]
+  --=LevelSlot|@{selected|lvl1_slots_expended}
+  --+Slot|[$LevelSlot]
+  --=LevelSlot1|@{selected|lvl1_slots_expended}
+  --+Slot 1|[$LevelSlot1]
+
+  --vtoken|@{selected|token_id} none
+  --vtoken|@{target|token_id} burst-fire
+  --vbetweentokens|@{selected|token_id} @{target|token_id} beam-magic
+
+  -->GetAndCheckSlotInformation|
+
+  --+Description:|You create three rays of fire and hurl them at targets within range. You can hurl them at one target or several.   
+   
+  --=MissileCount|[$SlotLevel] + 1
+  --=DisplayCount|1
+  --=MissileDamage|0
+  --#leftsub|Slot level [$SlotLevel]
+  --#rightsub|Ranged Attack
+  --#emoteText|@{selected|character_name} uses a level [$SlotLevel.Total] spell slot to fire [$MissileCount.Total] missiles of magical force!
+
+  --:MissileLoop|
+  -->FireMissile|
+  --=DisplayCount|[$DisplayCount] + 1
+  --?[$DisplayCount] -le [$MissileCount]|MissileLoop
+  --+Total|Total damage is [$MissileDamage]
+  -->DeductSpellSlot|
+  --#rightsub|Level [$SlotLevel] Left: [$SlotsRemaining] 
+  -->PlayEffects|none;burst-smoke;beam-magic;none
+
+  --X|
+
+  --:PlayEffects|Parameters are : source effect; target effect; line effect; sound effect
+  --vtoken|@{selected|token_id} [%1%]
+  --vtoken|@{target|token_id} [%2%]
+  --vbetweentokens|@{selected|token_id} @{target|token_id} [%3%]
+  --@roll20AM|_audio,play,nomenu|[%4%]
+  --<|
+
+  --:FireMissile|
+  --=ThisMissile|2d6
+  --=MissileDamage|[$MissileDamage] + [$ThisMissile]
+  --+Missile|[$DisplayCount.Total] Hits for [$ThisMissile] [b]force[/b] damage
+  --<|
+
+  --:GetAndCheckSlotInformation|
+  --=SlotLevel|?{Spell Slot Level?|2|3|4|5|6|7|8|9}
+  --=SlotsTotal|[*S:lvl[$SlotLevel]_slots_total]
+  --=SlotsExpended|[*S:lvl[$SlotLevel]_slots_expended]
+  --?[$SlotsExpended.Total] -ge [$SlotsTotal.Total]|NoSlotsLeft
+  --<|
+
+  --:NoSlotsLeft|
+  --+|[*S:character_name] has no level [$SlotLevel.Total] spell slots available.
+  --X|
+
+  --:DeductSpellSlot|
+  --=SlotsExpended|[$SlotsExpended] + 1
+  --@setattr|_charid [*S:character_id] _lvl[$SlotLevel]_slots_expended|[$SlotsExpended] _silent
+  --=SlotsRemaining|[$SlotsTotal] - [$SlotsExpended]
+  --<|
+ 
+  --X|
+
+--X|
+
+}}

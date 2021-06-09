@@ -1,0 +1,23 @@
+
+!scriptcard  {{ 
+  --#title|Shatter
+  --#emoteText|Fred casts Shatter
+  --#leftsub|Spell
+  --#rightsub|Ranged Attack
+  --#titleCardBackground|#44805a
+  --#sourceToken|@{selected|token_id}
+  --#targetToken|@{target|token_id}
+  --=LevelSlot|?{Spell Slot Level?|2|3|4|5|6|7|8|9} + 1
+  --=DamageRoll|[$LevelSlot]d8
+
+  --+Description:|A sudden loud ringing noise, painfully intense, erupts from a point of your choice within range. Each creature in a 10-foot-radius sphere centered on that point must make a Constitution saving throw.    
+  --+Damage|Creatures take [$DamageRoll] damage.
+  --@Spawn _name Spell_Shield _targets @{selected|token_id} _order toBack
+
+  --X|
+
+--X|
+
+}}
+
+!summon Spell_Sleep cust 50 50
