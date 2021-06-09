@@ -1,0 +1,12 @@
+/w @{character_name} &{template:atk} {{desc=**Spells**
+
+**Cantrips:**
+
+**1st:**
+[Searing Smite](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_SearingSmite&#125;)
+[Thunderous Smite](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_ThunderSmite&#125;)
+
+**2nd:**
+[Spiritual Weapon](!&#13;&#37;{@{selected|character_name}&#124;Spell_2_SpiritualWeapon&#125;)
+
+}}

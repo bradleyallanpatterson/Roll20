@@ -1,0 +1,8 @@
+/w @{character_name} &{template:atk} {{desc=**Spells**
+
+**1st:**
+[Searing Smite](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_SearingSmite&#125;)
+[Thunderous Smite](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_ThunderSmite&#125;)
+
+}}
+

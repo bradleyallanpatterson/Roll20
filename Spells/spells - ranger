@@ -1,0 +1,8 @@
+/w @{character_name} &{template:atk} {{desc=**Spells**
+
+**1st:**
+[Cure Wounds](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_CureWounds&#125;)
+[Detect Magic](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_Detect_Magic&#125;)
+[Disguise Self](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_Disquise_Self&#125;)
+[Detect Poison And Disease](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_Detect_Poison_Disease&#125;)
+}}
