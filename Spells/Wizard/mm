@@ -1,0 +1,64 @@
+!scriptcard {{ 
+  --#title|Magic Missile
+  --#sourceToken|@{selected|token_id}
+  --#targetToken|@{target|Target 1|token_id}, @{target|Target 2|token_id}, @{target|Target 3|token_id}
+
+  -->GetAndCheckSlotInformation|
+
+  --=MissileCount|[$SlotLevel] + 2
+  --=DisplayCount|1
+  --=MissileDamage|0
+  --#leftsub|Slot level [$SlotLevel]
+  --#rightsub|Ranged Attack
+  --#emoteText|@{selected|character_name} uses a level [$SlotLevel.Total] spell slot to fire [$MissileCount.Total] missiles of magical force!
+
+  --:MissileLoop|
+  -->FireMissile|
+  --=DisplayCount|[$DisplayCount] + 1
+  --?[$DisplayCount] -le [$MissileCount]|MissileLoop
+  --+Total|Total damage is [$MissileDamage]
+  -->DeductSpellSlot|
+  --#rightsub|Level [$SlotLevel] Left: [$SlotsRemaining] 
+  -->PlayEffects|none;burst-smoke;beam-magic;spell_01
+  -->ApplyDamageTokenmod|@{target|token_id};3;-[$MissileDamage]
+  -->ApplyDamageAlterbars|@{target|token_id};3;-[$MissileDamage]
+  --X|
+
+  --:FireMissile|
+  --=ThisMissile|1d4 + 1
+  --=MissileDamage|[$MissileDamage] + [$ThisMissile]
+  --+Missile|[$DisplayCount.Total] Hits for [$ThisMissile] [b]force[/b] damage
+  --<|
+
+  --:GetAndCheckSlotInformation|
+  --=SlotLevel|?{Spell Slot Level?|1|2|3|4|5|6|7|8|9}
+  --=SlotsTotal|[*S:lvl[$SlotLevel]_slots_total]
+  --=SlotsExpended|[*S:lvl[$SlotLevel]_slots_expended]
+  --?[$SlotsExpended.Total] -ge [$SlotsTotal.Total]|NoSlotsLeft
+  --<|
+
+  --:NoSlotsLeft|
+  --+|[*S:character_name] has no level [$SlotLevel.Total] spell slots available.
+  --X|
+
+  --:DeductSpellSlot|
+  --=SlotsExpended|[$SlotsExpended] + 1
+  --@setattr|_charid [*S:character_id] _lvl[$SlotLevel]_slots_expended|[$SlotsExpended] _silent
+  --=SlotsRemaining|[$SlotsTotal] - [$SlotsExpended]
+  --<|
+
+  --:PlayEffects|Parameters are : source effect; target effect; line effect; sound effect
+  --vtoken|@{selected|token_id} [%1%]
+  --vtoken|@{target|token_id} [%2%]
+  --vbetweentokens|@{selected|token_id} @{target|token_id} [%3%]
+  --@roll20AM|_audio,play,nomenu|[%4%]
+  --<|
+
+  --:ApplyDamageTokenmod|Parameters are tokenid;bar#;amount
+  --@token-mod|_ignore-selected _ids [%1%] _set bar[%2%]_value|[%3%]
+  --<|
+
+  --:ApplyDamageAlterbars|
+  --@alter|_target|[%1%] _bar|[%2%] _amount|[%3%]
+  --<|
+}}

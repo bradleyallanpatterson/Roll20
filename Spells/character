@@ -1,0 +1,16 @@
+/w gm &{template:npcaction}{{rname=@{selected|character_name}}}{{name=@{selected|npc_type}
+ **HP: **@{selected|bar1} / @{selected|hp|max} | ** AC: ** @{selected|ac} | **Spd: ** @{selected|speed}
+ }}{{description=
+[Initiative](~selected|INITIATIVE)
+****
+ **Abilities**
+[**Str @{selected|strength}** *(@{selected|strength_mod})*](~selected|npc_str) | [save](~selected|npc_str_save)
+[**Dex @{selected|dexterity}** *(@{selected|dexterity_mod})*](~selected|npc_dec) | [save](~selected|npc_dex_save)
+[**Con @{selected|constitution}** *(@{selected|constitution_mod})*](~selected|npc_con) | [save](~selected|npc_con_save)
+[**Int @{selected|intelligence}** *(@{selected|intelligence_mod})*](~selected|npc_int) | [save](~selected|npc_int_save)
+[**Wis @{selected|wisdom}** *(@{selected|wisdom_mod})*](~selected|npc_wis) | [save](~selected|npc_wis_save)
+[**Cha @{selected|charisma}** *(@{selected|charisma_mod})*](~selected|npc_cha) | [save](~selected|npc_cha_save)
+****
+**Skills**
+[Acrobatics](~selected|npc_Acrobatics) | [Animal Handling](~selected|npc_Animal_Handling) | [Arcana](~selected|Arcana) | [Athletics](~selected|npc_Athletics) | [Deception](~selected|npc_Deception) | [History](~selected|npc_History) | [Insight](~selected|npc_Insight)| [Intimidation](~selected|npc_Intimidation) | [Medicine](~selected|npc_Medicine) | [Nature](~selected|npc_Nature) | [Perception](~selected|npc_Perception) | [Performance](~selected|npc_Performance) | [Religion](~selected|npc_Religion) | [Sleight of Hand](~selected|npc_Sleight_of_Hand) | [Stealth](~selected|npc_stealth) | [Survival](~selected|npc_survival)
+}} &{noerror}

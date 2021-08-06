@@ -1,0 +1,17 @@
+!power {{
+ --name|Firebolt
+ --leftsub|Ranged Spell Attack
+ --rightsub|120 ft Range
+ --bgcolor|#2980B9
+ --tokenid|@{selected|token_id}
+--titlefontshadow|none
+--format|Conditions
+--corners|10
+ --Attack:|[[ [$Atk] ?{Attack|Standard,1d20|Advantage,2d20kh1|Disadvantage,2d20kl1} + @{spell_attack_bonus} ]] 
+
+ --?? $Atk.base == 20 ?? Critical Hit! Damage: |[[ [$CritDmg] 2d10 ]]
+ --?? $Atk >= @{target|AC} AND $Atk.base <> 20 ?? Hit! Damage:|[[ [$Dmg] 1d10 ]]
+ --?? $Atk < @{target|AC} ?? Spell Missed|
+ --vfx_opt|@{selected|token_id} @{target|token_id} beam-fire 
+
+}}

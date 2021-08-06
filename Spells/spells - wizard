@@ -3,6 +3,7 @@
 **Cantrips:**
 [Chill Touch](!&#13;&#37;{@{selected|character_name}&#124;Spell_0_ChillTouch&#125;)
 [Fire Bolt](!&#13;&#37;{@{selected|character_name}&#124;Spell_0_FireBolt&#125;)
+[Poison Spray](!&#13;&#37;{selected|character_name&#124;Spell_0_PoisonSpray&#125;)
 
 **1st:**
 [Burning Hands](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_BurningHands&#125;)
@@ -12,7 +13,17 @@
 [Sleep](!&#13;&#37;{@{selected|character_name}&#124;Spell_1_Sleep&#125;)
 
 **2nd:**
+[Dragons Breath](!&#13;&#37;{selected|character_name&#124;Spell_2_Dragonsbreath&#125;)
 [Scorching Ray](!&#13;&#37;{@{selected|character_name}&#124;Spell_2_Scorching_Ray&#125;)
 [Shatter](!&#13;&#37;{@{selected|character_name}&#124;Spell_2_Shatter&#125;)
 
+**3rd:**
+[Fireball](!&#13;&#37;{selected|character_name&#124;Spell_3_Fireball&#125;)
+[Haste](!&#13;&#37;{selected|character_name&#124;Spell_3_Haste&#125;)
+
+**4th:**
+[Fire Shield](!&#13;&#37;{selected|character_name&#124;Spell_4_Fire_Shield&#125;)
+[Wall of Fire](!&#13;&#37;{selected|character_name&#124;Spell_4_Fire_Wall&#125;)
+
 }}
+

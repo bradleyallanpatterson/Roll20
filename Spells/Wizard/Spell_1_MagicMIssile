@@ -1,0 +1,21 @@
+!power {{
+--emote|** @{selected|token_name} unleashes Magic Missile**
+--bgcolor|#2980B9
+--titlefontshadow|none
+--format|Conditions
+--corners|10
+--name|Magic Missle
+--Spell Level:| **Level 1**
+--leftsub|Ranged Attack spell
+--rightsub| 120'
+--Stats:| **Evocation** | **1 Action** |  **VS**
+--tokenid|@{selected|token_id}
+--target_list|@{target|1st|token_id} | @{target|2nd|token_id} | @{target|3rd|token_id}
+
+--Missile 1:| hit @{target|1st|token_name} for [[1d4+1]] HPs
+--Missile 2:| hit @{target|2nd|token_name} for [[1d4+1]] HPs
+--Missile 3:| hit @{target|3rd|token_name} for [[1d4+1]] HPs
+
+--?? @{selected|lvl1_slots_expended} > 0 ?? api_setattr|_name @{selected|character_name} _modb _lvl1_slots_expended|-1
+--?? @{selected|lvl1_slots_expended} <= 0 ?? Error:|User is out of spell slots
+}}

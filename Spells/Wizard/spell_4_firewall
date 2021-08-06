@@ -1,0 +1,25 @@
+!power {{
+--emote|** @{selected|token_name} casts Wall of Fire**
+--bgcolor|#2980B9
+--titlefontshadow|none
+--format|Conditions
+--corners|10
+--name|Wall of Fire
+--Spell Level:| **Level 4**
+--leftsub|120' range 
+--rightsub| up to 60' long, 20' high, and 1' thick, or a ringed wall up to 20' in diameter, 20' high, and 1' thick
+--Stats:| **Evocation** | **V,S,M**| **Concentration: ** 10 rounds
+--tokenid|@{selected|token_id}
+
+--Round Effects:| You create a wall of fire on a solid surface within range. One side of the wall, selected by you when you cast this spell, deals 5d8 fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage. 
+
+--Higher Levels:| When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d8 for each slot level above 4th.
+
+--Spell Save DC:| [[8+@{selected|intelligence_mod}+@{selected|pb}]]
+--Damage vs Target(s): |[[ 5d8 ]] HPs'. Each creature in that area must make a Dexterity saving throw, taking full on a failed save, or half as much damage on a successful one.
+ --vfx_opt|@{target|token_id} explode-fire 
+
+--?? @{selected|lvl3_slots_expended} > 0 ?? Success:| Decreased 4th level spells slot by 1
+--?? @{selected|lvl3_slots_expended} <= 0 ?? Error:|User is out of spell slots
+
+}}

@@ -1,0 +1,27 @@
+!power {{
+--emote|**@{selected|token_name} casts False Life on @{target|1st|token_name} **
+--bgcolor|#2980B9
+--tokenid|@{selected|token_id}
+--target_list|@{target|1st|token_id}
+--titlefontshadow|none
+--format|Conditions
+--corners|10
+--name| False Life
+--Spell Level:| **Level 1**
+--leftsub|60’ Range
+--Stats:| **Necromancy** | **1 Action** |  **V,S**
+
+--Spell Levels Before Casting:|[[ [$Rem] 1d1 + @{selected|lvl1_slots_expended} -1 ]]
+
+--?? $Rem > 0 AND $HP == 8 ?? api_setattr| _name @{selected|character_name} _modb _hp_temp|8
+--?? $Rem > 0 AND $HP == 7 ?? api_setattr| _name @{selected|character_name} _modb _hp_temp|7
+--?? $Rem > 0 AND $HP == 6 ?? api_setattr| _name @{selected|character_name} _modb _hp_temp|6
+--?? $Rem > 0 AND $HP == 5 ?? api_setattr| _name @{selected|character_name} _modb _hp_temp|5
+--?? $Rem < 1 ?? Error:| User has no spell levels available.
+
+--?? $Rem > 0 ?? Temporary HPs Gained:|[[ [$HP] 1d4 + 4 ]]
+
+--?? @{selected|lvl1_slots_expended} > 0 ?? Success:| Decrease 1st level spells slot by 1
+--?? @{selected|lvl1_slots_expended} <= 0 ?? Error:|User is out of spell slots
+
+}}

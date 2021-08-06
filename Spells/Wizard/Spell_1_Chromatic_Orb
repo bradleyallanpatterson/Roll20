@@ -1,0 +1,48 @@
+!scriptcard  {{ 
+  --#title|Chromatic Orb
+  --#emoteText|Fred casts Chromatic Orb at @{target|token_name}
+  --#leftsub|Cantrip
+  --#rightsub|Ranged Attack
+  --#titleCardBackground|#44805a
+  --#sourceToken|@{selected|token_id}
+  --#targetToken|@{target|token_id}
+  --=LevelSlot|?{Spell Slot Level?|1|2|3|4|5|6|7|8|9} + 2
+  --=DamageRoll|[$LevelSlot]d8
+  --+Description:|You hurl a 4-inch-diameter sphere of energy at a creature that you can see within range. You choose acid, cold, fire, lightning, poison, or thunder for the type of orb you create, and then make a ranged spell attack against the target.
+  --=AttackRoll|1d20 + @{selected|spell_attack_bonus}[Spell]
+  --+Attack| You rolled [$AttackRoll] to hit AC @{target|npc_ac}
+  --?[$AttackRoll.Base] -eq 20|Crit
+  --?[$AttackRoll.Base] -eq 1|Fumble
+  --?[$AttackRoll.Total] -lt @{target|npc_ac}|Miss
+
+  --:Hit|
+  -->RollDamage|
+  --+Hit|You dealt [$DamageRoll] damage.
+  --X|
+
+  --:Miss|
+  --+Miss|You spell missed.
+  --X|
+
+  --:Fumble|
+  --+Fumble|You spell went horribly wrong!
+  --X|
+
+  --:Crit|
+  -->RollDamage|crit
+  --+Critical Hit!|You dealt [$DamageRoll] damage.
+  --X|
+
+  --:RollDamage|
+  --?[%1] -eq crit|CritDamage
+  --=Damage|[$DamageRoll]
+  --<|
+  --:CritDamage|
+  --=Damage|[$DamageRoll] + [$DamageRoll]
+  --<|
+
+  --X|
+
+--X|
+
+}}

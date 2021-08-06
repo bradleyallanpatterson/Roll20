@@ -1,0 +1,15 @@
+!power {{
+ --name|Burning Hands
+ --leftsub|Self
+ --rightsub|15' cone
+ --bgcolor|#2980B9
+ --tokenid|@{selected|token_id}
+--titlefontshadow|none
+--format|Conditions
+--corners|10
+
+--Damage: |[[ 3d6 ]] Target(s) must save vs. Dexterity for half damage.
+--?? @{selected|lvl1_slots_expended} > 0 ?? api_setattr|_name @{selected|character_name} _modb _lvl1_slots_expended|-1
+--?? @{selected|lvl1_slots_expended} <= 0 ?? Error:|User is out of spell slots
+}}
+/fx breath-fire @{selected|token_id} @{target|Foe|token_id}

@@ -1,0 +1,23 @@
+!power {{
+--emote|** @{selected|token_name} casts Dragon's Breath at @{target|token_name}**
+--bgcolor|#2980B9
+--titlefontshadow|none
+--format|Conditions
+--corners|10
+--name|Dragon's Breath
+--Spell Level:| **Level 2**
+--leftsub|Self 
+--rightsub| 15' cone
+--Stats:| **Transmutation** | **V,S,M**
+--tokenid|@{selected|token_id}
+--target_list|@{target|token_id}
+--Casting Time:| 1 Bonus Action
+--Duration:| Concentration, up to 1 minute
+--Round Effects:| You touch one willing creature and imbue it with the power to spew magical energy from its mouth, provided it has one. Choose acid, cold, fire, lightning, or poison. Until the spell ends, the creature can use an action to exhale energy of the chosen type in a 15-foot cone.  
+--Spell Save DC:| [[8+@{selected|intelligence_mod}+@{selected|pb}]]
+--Damage vs Target(s): |[[ 3d6 ]] HPs'. Each creature in that area must make a Dexterity saving throw, taking full damage on a failed save, or half as much damage on a successful one.
+ --vfx_opt|@{selected|token_id} @{target|token_id} breath-fire 
+
+--?? @{selected|lvl2_slots_expended} > 0 ?? Success:| Decrease 2nd level spells slot by 1
+--?? @{selected|lvl2_slots_expended} <= 0 ?? Error:|User is out of spell slots
+}}

@@ -1,0 +1,26 @@
+!power {{
+--emote|** @{selected|token_name} casts Fireball at @{target|token_name}**
+--bgcolor|#2980B9
+--titlefontshadow|none
+--format|Conditions
+--corners|10
+--name|Fireball
+--Spell Level:| **Level 3**
+--leftsub|150' range 
+--rightsub| 20' radius
+--Stats:| **Evocation** | **V,S,M**
+--tokenid|@{selected|token_id}
+--target_list|@{target|token_id}
+
+--Round Effects:| A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot-radius sphere centered on that point must make a Dexterity saving throw. A target takes 8d6 fire damage on a failed save, or half as much damage on a successful one. The fire spreads around corners. It ignites flammable objects in the area that aren’t being worn or carried.
+
+--Higher Levels:| When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d6 for each slot level above 3rd.
+
+--Spell Save DC:| [[8+@{selected|intelligence_mod}+@{selected|pb}]]
+--Damage vs Target(s): |[[ 8d6 ]] HPs'. Each creature in that area must make a Dexterity saving throw, taking full on a failed save, or half as much damage on a successful one.
+ --vfx_opt|@{target|token_id} explode-fire 
+
+--?? @{selected|lvl3_slots_expended} > 0 ?? Success:| Decreased 3rd level spells slot by 1
+--?? @{selected|lvl3_slots_expended} <= 0 ?? Error:|User is out of spell slots
+
+}}
