@@ -1,0 +1,19 @@
+!scriptcard  {{ 
+  --&SpellName|Cure Wounds
+  --#title|[&SpellName]
+  --#emoteText|@{selected|token_name} casts [&SpellName] on @{target|token_name}
+  --#leftsub|Touch - V, S
+  --#rightsub|Spell 
+  --#titleCardBackground|#44805a
+  --#sourceToken|@{selected|token_id}
+  --#targetToken|@{target|token_id}
+  --=SpellCastingLevel|?{Spell Slot Level?|1|2|3|4|5|6|7|8|9}
+  --+Description:|A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs.
+  --=DamageRoll|[$SpellCastingLevel]d8 
+  --+Healing:| @{target|token_name} is healed for [$DamageRoll] hps'.
+
+  --vtoken|@{selected|token_id} none
+  --vtoken|@{target|token_id} burst-holy
+  --vbetweentokens|none
+
+}}
